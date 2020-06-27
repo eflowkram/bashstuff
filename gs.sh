@@ -10,7 +10,6 @@ HEADER=$(cat<<EOF
 EOF
 )
 
-echo $HEADER
 contact() {
 cat << EOF
 <Contact>
@@ -24,12 +23,13 @@ cat << EOF
 EOF
 }
 
+echo $HEADER
 IFS=$'\n'
 for L in `cat $1`; do
-LNAME=$(echo $L | cut -f4 -d',')
-FNAME=$(echo $L | cut -f2 -d',')
-PTYPE=$(echo $L | cut -f32 -d',')
-NUMBER=$(echo $L | cut -f33 -d',')
-contact
+    LNAME=$(echo $L | cut -f4 -d',')
+    FNAME=$(echo $L | cut -f2 -d',')
+    PTYPE=$(echo $L | cut -f32 -d',')
+    NUMBER=$(echo $L | cut -f33 -d',')
+    contact
 done
 echo "</Addressbook>"
